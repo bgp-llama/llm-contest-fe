@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.37a05278.css",
-    "main.js": "/static/js/main.c09f39ef.js",
-    "static/js/453.5ba9be9e.chunk.js": "/static/js/453.5ba9be9e.chunk.js",
-    "static/media/robothuman.png": "/static/media/robothuman.657d6b475137e85a8a51.png",
-    "index.html": "/index.html",
-    "static/media/chatbot_icon.svg": "/static/media/chatbot_icon.0e10aa2c23669525fbb3a5ea06aba4fa.svg",
-    "main.37a05278.css.map": "/static/css/main.37a05278.css.map",
-    "main.c09f39ef.js.map": "/static/js/main.c09f39ef.js.map",
-    "453.5ba9be9e.chunk.js.map": "/static/js/453.5ba9be9e.chunk.js.map"
+    "main.css": "/llm-contest-fe/static/css/main.37a05278.css",
+    "main.js": "/llm-contest-fe/static/js/main.feb40ef3.js",
+    "static/js/453.5ba9be9e.chunk.js": "/llm-contest-fe/static/js/453.5ba9be9e.chunk.js",
+    "static/media/robothuman.png": "/llm-contest-fe/static/media/robothuman.657d6b475137e85a8a51.png",
+    "index.html": "/llm-contest-fe/index.html",
+    "static/media/chatbot_icon.svg": "/llm-contest-fe/static/media/chatbot_icon.0e10aa2c23669525fbb3a5ea06aba4fa.svg",
+    "main.37a05278.css.map": "/llm-contest-fe/static/css/main.37a05278.css.map",
+    "main.feb40ef3.js.map": "/llm-contest-fe/static/js/main.feb40ef3.js.map",
+    "453.5ba9be9e.chunk.js.map": "/llm-contest-fe/static/js/453.5ba9be9e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.37a05278.css",
-    "static/js/main.c09f39ef.js"
+    "static/js/main.feb40ef3.js"
   ]
 }

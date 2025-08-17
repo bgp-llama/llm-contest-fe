@@ -2,6 +2,7 @@
   "name": "chatbot",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://bgp-llama.github.io/llm-contest-fe",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",

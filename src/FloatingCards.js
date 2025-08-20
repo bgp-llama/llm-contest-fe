@@ -24,50 +24,78 @@ function FloatingCards() {
       >
         <img src={robothuman} alt="robothuman" style={{ width: 160, height: 160, borderRadius: 16, opacity: 0.8 }} />
       </motion.div>
-      {/* 메인 카드 (중앙 정렬) */}
-      <motion.div
-        initial={{ y: 5 }}
-        animate={{ y: [-16, 0] }}
-        transition={{ duration: 6, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-        style={{
-          position: "absolute", left: "38%", top: "45%", background: "rgba(30,40,60,0.55)",
-          borderRadius: 18, boxShadow: "0 8px 32px #0003", padding: "18px 32px", color: "#fff",
-          backdropFilter: "blur(8px)", minWidth: 260, textAlign: "center"
-        }}
-      >
-        <div style={{ marginBottom: 8 }}>
-          <span style={{ fontWeight: 600, fontSize: 20 }}>Make your own AI Chatbot</span>
-        </div>
-        <div style={{ fontWeight: 400, fontSize: 14, color: "#b5cfff" }}>Your idea, Our AI</div>
-        {/* Idea of your own, Idea for everyone */}
-      </motion.div>
-      {/* 새로운 아이디어 카드 */}
+      {/* 작은 카드 1: 학교동선봇(지름길) */}
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
         style={{
-          position: "absolute", left: "65%", top: "60%",
+          position: "absolute", left: "63%", top: "45%",
           background: "rgba(255,255,255,0.9)", borderRadius: 16, boxShadow: "0 4px 24px #2563eb33",
-          padding: "16px 28px", minWidth: 160, textAlign: "center"
+          padding: "16px 28px", minWidth: 180, textAlign: "center"
         }}
       >
-        <div style={{ fontWeight: 700, fontSize: 18, color: "#2563eb" }}>새로운 아이디어</div>
-        <div style={{ fontWeight: 400, fontSize: 13, color: "#555" }}>떠오르는 중 ✨</div>
+        <div style={{ fontWeight: 700, fontSize: 16, color: "black" }}>학교 동선 봇 (지름길)</div>
+        <div style={{ fontWeight: 400, fontSize: 13, color: "#555" }}>건물 간 최단 동선 추천</div>
       </motion.div>
-      {/* 빠른 응답 카드 */}
+      {/* 작은 카드 2: 학과별 챗봇 */}
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 6, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
         style={{
-          position: "absolute", left: "20%", top: "70%",
+          position: "absolute", left: "20%", top: "60%",
           background: "rgba(30,40,60,0.7)", borderRadius: 16, boxShadow: "0 4px 24px #0003",
           padding: "16px 24px", minWidth: 180, color: "#fff", textAlign: "center"
         }}
       >
-        <div style={{ fontWeight: 700, fontSize: 16 }}>빠른 응답</div>
-        <div style={{ fontWeight: 400, fontSize: 13, color: "#b5cfff" }}>정확한 결과 ⚡</div>
+        <div style={{ fontWeight: 700, fontSize: 16 }}>학과별 챗봇</div>
+        <div style={{ fontWeight: 400, fontSize: 13, color: "#b5cfff" }}>전공 맞춤 Q&A</div>
+      </motion.div>
+
+      {/* 작은 카드 3: 꿀교양 */}
+      <motion.div
+        initial={{ y: 0 }}
+        animate={{ y: [0, -8, 0] }}
+        transition={{ duration: 5.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+        style={{
+          position: "absolute", left: "60%", top: "65%",
+          background: "rgba(255,255,255,0.95)", borderRadius: 16, boxShadow: "0 4px 24px #2563eb22",
+          padding: "14px 22px", minWidth: 140, textAlign: "center"
+        }}
+      >
+        <div style={{ fontWeight: 700, fontSize: 16, color: "#0f172a" }}>꿀교양</div>
+        <div style={{ fontWeight: 400, fontSize: 12, color: "#334155" }}>후기 기반 추천</div>
+      </motion.div>
+
+      {/* 작은 카드 4: 학사일정 봇 */}
+      <motion.div
+        initial={{ y: 0 }}
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 5.8, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+        style={{
+          position: "absolute", left: "40%", top: "85%",
+          background: "rgba(255,255,255,0.92)", borderRadius: 16, boxShadow: "0 4px 24px #0002",
+          padding: "14px 22px", minWidth: 170, textAlign: "center"
+        }}
+      >
+        <div style={{ fontWeight: 700, fontSize: 16, color: "#0f172a" }}>학사일정 봇</div>
+        <div style={{ fontWeight: 400, fontSize: 12, color: "#334155" }}>학사·수업 일정 확인</div>
+      </motion.div>
+
+      {/* 작은 카드 4: 필수수업 챗봇 */}
+      <motion.div
+        initial={{ y: 0 }}
+        animate={{ y: [0, 12, 0] }}
+        transition={{ duration: 6.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+        style={{
+          position: "absolute", left: "28%", top: "40%",
+          background: "rgba(30,40,60,0.75)", borderRadius: 16, boxShadow: "0 4px 24px #0004",
+          padding: "14px 22px", minWidth: 180, color: "#fff", textAlign: "center"
+        }}
+      >
+        <div style={{ fontWeight: 700, fontSize: 16 }}>필수 수업 챗봇</div>
+        <div style={{ fontWeight: 400, fontSize: 12, color: "#b5cfff" }}>필수 이수 과목 안내</div>
       </motion.div>
     </motion.div>
   );

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Navigation from "./Navigation";
 import "./App.css";
+import super3 from "./super3.png";
 
 
 const modelOptions = [
@@ -30,6 +31,7 @@ function ChatbotRegister() {
   const [submitError, setSubmitError] = useState("");
   const [submitSuccess, setSubmitSuccess] = useState("");
   const [createdInfo, setCreatedInfo] = useState(null);
+  const [showCelebration, setShowCelebration] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -84,8 +86,9 @@ function ChatbotRegister() {
       setCreatedInfo(data);
 
       setSubmitSuccess("챗봇이 성공적으로 등록되었습니다.");
-      // 1초 후 챗봇 탐색으로 이동
-      setTimeout(() => navigate("/explore"), 1000);
+      // 완료 애니메이션 표시 후 이동
+      setShowCelebration(true);
+      setTimeout(() => navigate("/explore"), 1600);
     } catch (err) {
       console.error("챗봇 등록 실패:", err);
       setSubmitError(err.message || "등록 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.");
@@ -107,6 +110,38 @@ function ChatbotRegister() {
        fontFamily: "Pretendard, sans-serif"
      }}>
       <Navigation />
+
+      {/* 등록 완료 오버레이 */}
+      <AnimatePresence>
+        {showCelebration && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              position: "fixed",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 9999,
+              pointerEvents: "none"
+            }}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1.06, opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              style={{ textAlign: "center" }}
+            >
+              <img src={super3} alt="등록 완료" style={{ width: 250, height: "auto", filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.3))" }} />
+              <div style={{ marginTop: 12, fontWeight: 800, fontSize: "1.6rem", color: "#fff" }}>등록 완료!</div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* 메인 컨텐츠 */}
       <div style={{

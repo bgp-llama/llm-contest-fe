@@ -331,7 +331,12 @@ function HomePage() {
                   style={{ fontSize: "2.5rem", fontWeight: 800, lineHeight: 1.2, margin: 0 }}
                 >
                   무엇을 도와드릴까요?<br />
-                  슈퍼차차가 알아서 처리해드릴게요
+                  <span style={{
+                    background: "linear-gradient(45deg, #fff,rgb(145, 95, 231))",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text"
+                  }}>슈퍼차차</span>가 알아서 처리해드릴게요
                 </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}

@@ -20,7 +20,6 @@ function ChatbotRegister() {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    category: "기타",
     icon: "",
     features: "",
     model_name: "gpt-4o-mini",
@@ -196,33 +195,7 @@ function ChatbotRegister() {
             />
           </div>
 
-          {/* 카테고리 선택 */}
-          <div style={{ marginBottom: 24 }}>
-            <label style={{ display: "block", marginBottom: 8, fontWeight: 600, fontSize: "1.1rem" }}>
-              카테고리
-            </label>
-            <select
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-              style={{
-                width: "590px",
-                padding: "16px 20px",
-                borderRadius: 12,
-                border: "1px solid rgba(255,255,255,0.2)",
-                background: "rgba(255,255,255,0.1)",
-                color: "#fff",
-                fontSize: "1rem"
-              }}
-            >
-              <option value="번역" style={{ background: "#1a1a1a", color: "#fff" }}>번역</option>
-              <option value="업무" style={{ background: "#1a1a1a", color: "#fff" }}>업무</option>
-              <option value="고객상담" style={{ background: "#1a1a1a", color: "#fff" }}>고객상담</option>
-              <option value="학습" style={{ background: "#1a1a1a", color: "#fff" }}>학습</option>
-              <option value="엔터테인먼트" style={{ background: "#1a1a1a", color: "#fff" }}>엔터테인먼트</option>
-              <option value="기타" style={{ background: "#1a1a1a", color: "#fff" }}>기타</option>
-            </select>
-          </div>
+          
 
           {/* 모델 선택 */}
           <div style={{ marginBottom: 24 }}>
@@ -288,14 +261,14 @@ function ChatbotRegister() {
           {/* 파일 업로드 (선택) */}
           <div style={{ marginBottom: 20 }}>
             <label style={{ display: "block", marginBottom: 8, fontWeight: 600, fontSize: "1.1rem" }}>
-              문서 업로드 (선택)
+              문서 업로드
             </label>
             <input
               type="file"
               onChange={(e) => setFile(e.target.files && e.target.files[0] ? e.target.files[0] : null)}
               style={{ display: "block" }}
             />
-            <div style={{ marginTop: 6, color: "#c3cbe7", fontSize: 13 }}>PDF/텍스트 등 지원 여부는 서버 설정에 따릅니다.</div>
+            <div style={{ marginTop: 6, color: "#c3cbe7", fontSize: 13 }}></div>
           </div>
 
           {/* 주요 기능 */}

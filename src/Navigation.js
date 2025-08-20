@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import chatbotIcon from "./chatbot_icon.svg";
+import chatbotIcon from "./super3.png";
 
 function Navigation() {
   const location = useLocation();
@@ -34,7 +34,7 @@ function Navigation() {
            }}
          >
           <img src={chatbotIcon} alt="로고" style={{ height: 36, verticalAlign: "middle" }} />
-          <span>챗봇모음</span>
+          <span>슈퍼차차</span>
         </motion.div>
       </Link>
       <motion.div

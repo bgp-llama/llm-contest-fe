@@ -5,6 +5,7 @@ import FloatingBackground from "./FloatingBackground";
 import FloatingCards from "./FloatingCards";
 import "./App.css";
 import "./FloatingBackground.css";
+import super4 from "./super4.png";
 
 function HomePage() {
   const [input, setInput] = useState("");
@@ -330,7 +331,7 @@ function HomePage() {
                   style={{ fontSize: "2.5rem", fontWeight: 800, lineHeight: 1.2, margin: 0 }}
                 >
                   무엇을 도와드릴까요?<br />
-                  AI가 알아서 처리해드릴게요
+                  슈퍼차차가 알아서 처리해드릴게요
                 </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
@@ -356,7 +357,7 @@ function HomePage() {
                         setInput(e.target.value);
                         if (showError) setShowError(false);
                       }}
-                      placeholder="예: 영어 번역이 필요해요"
+                      placeholder="예 : 학사일정을 알고싶어요"
                       style={{
                         flex: 1,
                         padding: "16px 20px",
@@ -383,7 +384,7 @@ function HomePage() {
                         whiteSpace: "nowrap"
                       }}
                     >
-                      {isLoading ? "챗봇을 불러오는 중..." : "AI로 실행하기"}
+                      {isLoading ? "챗봇을 불러오는 중..." : "슈퍼차차로 실행하기"}
                     </button>
                   </div>
                   {showError && (
@@ -560,7 +561,7 @@ function HomePage() {
                       marginBottom: 30,
                       fontWeight: 400
                     }}>
-                      당신의 요청에 맞는 최적의 AI를 자동으로 선택합니다
+                      당신의 요청에 맞는 최적의 챗봇을 자동으로 선택합니다
                     </p>
 
                     {/* 슈퍼챗봇 특징 */}
@@ -674,11 +675,31 @@ function HomePage() {
                   borderBottom: "1px solid rgba(255,255,255,0.1)",
                   display: "flex",
                   justifyContent: "space-between",
-                  alignItems: "center"
+                  alignItems: "center",
+                  position: "relative",
+                  overflow: "hidden"
                 }}>
-                  <h2 style={{ fontSize: "1.4rem", fontWeight: 600 }}>
-                    슈퍼챗봇과 대화하기
-                  </h2>
+                  <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
+                    <h2 style={{ fontSize: "1.4rem", fontWeight: 600, margin: 0, position: "relative", zIndex: 1 }}>
+                      슈퍼차차와 대화하기
+                    </h2>
+                    <img
+                      src={super4}
+                      alt="super4"
+                      style={{
+                        position: "absolute",
+                        left: "100%",
+                        marginLeft: 10,
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        width: 120,
+                        height: "auto",
+                        opacity: 0.6,
+                        pointerEvents: "none",
+                        zIndex: 0
+                      }}
+                    />
+                  </div>
                   <button
                     onClick={() => setMessages([])}
                     style={{

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import robothuman from "./robothuman.png";
+import robothuman from "./super.png";
 
 function FloatingCards() {
   return (
@@ -10,19 +10,19 @@ function FloatingCards() {
       transition={{ duration: 1, delay: 1.2 }}
       style={{ position: "absolute", width: "100%", height: "100%", top: 0, left: 0, zIndex: 1, pointerEvents: "none" }}
     >
-      {/* robothuman.png 이미지 카드 */}
+      {/* super.png 이미지 카드 */}
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: [0, 18, 0] }}
         transition={{ duration: 5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
         style={{
           position: "absolute", left: "50%", top: "10%",
-          background: "rgba(255,255,255,0.85)", borderRadius: 20, boxShadow: "0 4px 24px #2563eb33",
+          background: "rgba(255, 255, 255, 0)", borderRadius: 20, 
           padding: 0, minWidth: 120, minHeight: 120,
           display: "flex", alignItems: "center", justifyContent: "center"
         }}
       >
-        <img src={robothuman} alt="robothuman" style={{ width: 90, height: 90, borderRadius: 16 }} />
+        <img src={robothuman} alt="robothuman" style={{ width: 160, height: 160, borderRadius: 16, opacity: 0.8 }} />
       </motion.div>
       {/* 메인 카드 (중앙 정렬) */}
       <motion.div

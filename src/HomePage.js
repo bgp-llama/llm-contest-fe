@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navigation from "./Navigation";
 import FloatingBackground from "./FloatingBackground";
@@ -6,6 +6,34 @@ import FloatingCards from "./FloatingCards";
 import "./App.css";
 import "./FloatingBackground.css";
 import super4 from "./super4.png";
+
+// 프로필 원형 그라데이션과 배경 버블 컬러 팔레트
+const GRADIENT_THEMES = [
+  {
+    profile: "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)",
+    blobs: ["#8b5cf6", "#ec4899", "#06b6d4"],
+  },
+  {
+    profile: "linear-gradient(135deg, #34d399 0%, #10b981 50%, #06b6d4 100%)",
+    blobs: ["#34d399", "#60a5fa", "#f59e0b"],
+  },
+  {
+    profile: "linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%)",
+    blobs: ["#f59e0b", "#ef4444", "#ec4899"],
+  },
+  {
+    profile: "linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #8b5cf6 100%)",
+    blobs: ["#22d3ee", "#3b82f6", "#8b5cf6"],
+  },
+  {
+    profile: "linear-gradient(135deg, #84cc16 0%, #10b981 50%, #22d3ee 100%)",
+    blobs: ["#84cc16", "#10b981", "#22d3ee"],
+  },
+  {
+    profile: "linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #6366f1 100%)",
+    blobs: ["#a855f7", "#6366f1", "#14b8a6"],
+  },
+];
 
 function HomePage() {
   const [input, setInput] = useState("");
@@ -16,6 +44,29 @@ function HomePage() {
   const [isSending, setIsSending] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showError, setShowError] = useState(false);
+
+  // 랜덤 그라데이션 테마 상태 (챗봇 변경 시 갱신)
+  const [themeIndex, setThemeIndex] = useState(0);
+  const [profileKey, setProfileKey] = useState(0); // 프로필 그라데이션 크로스페이드 키
+  const theme = GRADIENT_THEMES[themeIndex];
+
+  // 동일 챗봇이면 상태 변경하지 않도록 가드
+  const updateSelectedChatbotIfChanged = (id, name) => {
+    setSelectedChatbot((prev) => {
+      if (!prev || prev.id !== id || prev.name !== name) {
+        return { id, name };
+      }
+      return prev;
+    });
+  };
+
+  useEffect(() => {
+    if (!selectedChatbot) return;
+    let next = Math.floor(Math.random() * GRADIENT_THEMES.length);
+    if (next === themeIndex) next = (next + 1) % GRADIENT_THEMES.length;
+    setThemeIndex(next);
+    setProfileKey((k) => k + 1); // 키 변경으로 프로필 그라데이션 부드럽게 교체
+  }, [selectedChatbot]);
 
     const handleRecommend = async (e) => {
     e.preventDefault();
@@ -74,7 +125,7 @@ function HomePage() {
               // 응답 메시지 설정
               const responseMessage = chatData.message || invokeData.response || "AI가 요청을 처리했습니다.";
               
-              setSelectedChatbot({ id: chatbotId, name: chatbotName });
+              updateSelectedChatbotIfChanged(chatbotId, chatbotName);
               setMessages([
                 {
                   id: Date.now(),
@@ -110,7 +161,7 @@ function HomePage() {
             chatbotName = "영화 추천 챗봇";
           }
           
-          setSelectedChatbot({ id: 1, name: chatbotName });
+          updateSelectedChatbotIfChanged(1, chatbotName);
           setMessages([
             {
               id: Date.now(),
@@ -206,8 +257,8 @@ function HomePage() {
             // 응답 메시지 설정
             const responseMessage = chatData.message || invokeData.response || "AI가 요청을 처리했습니다.";
 
-            // 선택된 챗봇 업데이트
-            setSelectedChatbot({ id: chatbotId, name: chatbotName });
+            // 선택된 챗봇이 실제 변경된 경우에만 업데이트
+            updateSelectedChatbotIfChanged(chatbotId, chatbotName);
 
             const botResponse = {
               id: Date.now() + 1,
@@ -470,42 +521,47 @@ function HomePage() {
                     left: 0,
                     zIndex: 1
                   }}>
-                    <div style={{
+                    <motion.div style={{
                       position: "absolute",
                       width: 240,
                       height: 240,
                       borderRadius: "50%",
-                      background: "#8b5cf6", // 보라색
                       top: "15%",
                       left: "20%",
                       filter: "blur(60px)",
                       opacity: 0.8,
                       animation: "moveBlob 12s infinite alternate ease-in-out"
-                    }} />
-                    <div style={{
+                    }}
+                    animate={{ backgroundColor: theme.blobs[0] }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }} />
+
+                    <motion.div style={{
                       position: "absolute",
                       width: 240,
                       height: 240,
                       borderRadius: "50%",
-                      background: "#ec4899", // 핑크색
                       top: "45%",
                       left: "35%",
                       filter: "blur(60px)",
                       opacity: 0.7,
                       animation: "moveBlob 12s infinite alternate ease-in-out 2s"
-                    }} />
-                    <div style={{
+                    }}
+                    animate={{ backgroundColor: theme.blobs[1] }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }} />
+
+                    <motion.div style={{
                       position: "absolute",
                       width: 240,
                       height: 240,
                       borderRadius: "50%",
-                      background: "#06b6d4", // 청록색
                       top: "65%",
                       left: "15%",
                       filter: "blur(60px)",
                       opacity: 0.6,
                       animation: "moveBlob 12s infinite alternate ease-in-out 4s"
-                    }} />
+                    }}
+                    animate={{ backgroundColor: theme.blobs[2] }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }} />
                   </div>
                   
                   {/* 컨텐츠 */}
@@ -518,21 +574,31 @@ function HomePage() {
                     {/* 선택된 챗봇 프로필 */}
                     {selectedChatbot ? (
                       <div style={{ marginBottom: 24 }}>
-                        <div style={{
-                          width: 80,
-                          height: 80,
-                          borderRadius: "50%",
-                          background: "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)",
-                          margin: "0 auto 12px auto",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: 32,
-                          fontWeight: "bold",
-                          color: "#fff",
-                          boxShadow: "0 8px 32px rgba(0,0,0,0.3)"
-                        }}>
-                          {selectedChatbot.name.charAt(0)}
+                        <div style={{ width: 80, height: 80, margin: "0 auto 12px auto", position: "relative" }}>
+                          <AnimatePresence mode="wait">
+                            <motion.div
+                              key={profileKey}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.6, ease: "easeInOut" }}
+                              style={{
+                                position: "absolute",
+                                inset: 0,
+                                borderRadius: "50%",
+                                background: theme.profile,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontSize: 32,
+                                fontWeight: "bold",
+                                color: "#fff",
+                                boxShadow: "0 8px 32px rgba(0,0,0,0.3)"
+                              }}
+                            >
+                              {selectedChatbot.name.charAt(0)}
+                            </motion.div>
+                          </AnimatePresence>
                         </div>
                         <h3 style={{
                           fontSize: "1.1rem",
